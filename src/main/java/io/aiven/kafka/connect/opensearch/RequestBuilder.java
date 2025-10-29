@@ -68,6 +68,9 @@ public interface RequestBuilder {
 
     static SetOpenSearchSinkConnectorConfig builder() {
         return config -> index -> record -> payload -> () -> {
+            System.out.println("-----------");
+            System.out.println(payload);
+            System.out.println("-----------");
             final var documentIDStrategy = config.documentIdStrategy(record.topic());
             final var documentId = documentIDStrategy.documentId(record);
             if (Objects.isNull(record.value())) {

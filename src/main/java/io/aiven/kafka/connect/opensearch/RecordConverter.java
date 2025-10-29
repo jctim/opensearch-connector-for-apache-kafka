@@ -107,6 +107,15 @@ public class RecordConverter {
                 ? record.value()
                 : preProcessValue(record.value(), record.valueSchema(), schema);
 
+        System.out.println("1. -------------");
+        System.out.println(record.topic());
+        System.out.println("2. -------------");
+        System.out.println(schema);
+        System.out.println("3. -------------");
+        System.out.println(value != null ? value.getClass() : null);
+        System.out.println("4. -------------");
+        System.out.println(value);
+
         final byte[] rawJsonPayload = JSON_CONVERTER.fromConnectData(record.topic(), schema, value);
         return new String(rawJsonPayload, StandardCharsets.UTF_8);
     }
